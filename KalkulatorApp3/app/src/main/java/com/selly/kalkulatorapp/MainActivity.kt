@@ -65,15 +65,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun addSubtractCalculate(passedList: MutableList<Any>):     Int
+    private fun addSubtractCalculate(passedList: MutableList<Any>):     Double
     {
-        var result = passedList[0] as Int
+        var result = passedList[0] as Double
 
         for(i in passedList.indices){
             if (passedList[i] is Char && i != passedList.lastIndex )
             {
                 val operator = passedList[i]
-                val nextDigit = passedList[i + 1] as Int
+                val nextDigit = passedList[i + 1] as Double
                 if(operator == '+')
                     result += nextDigit
                 if(operator == '-')
@@ -105,8 +105,8 @@ class MainActivity : AppCompatActivity() {
             if (passedList[i] is Char && i != passedList.lastIndex && i <restartIndex)
             {
                 val operator = passedList[i]
-                val prevDigit = passedList[i-1] as Int
-                val nextDigit = passedList[i + 1] as Int
+                val prevDigit = passedList[i-1] as Double
+                val nextDigit = passedList[i + 1] as Double
                 when(operator)
                 {
                     'x' ->
@@ -142,15 +142,14 @@ class MainActivity : AppCompatActivity() {
                 currentDigit += character
             else
             {
-                list.add(currentDigit.toInt())
+                list.add(currentDigit.toDouble())
                 currentDigit = ""
                 list.add(character)
             }
 
         }
         if(currentDigit != "")
-            list.add(currentDigit.toInt())
-
+            list.add(currentDigit.toDouble())
         return list
     }
 }
